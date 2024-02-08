@@ -1,3 +1,7 @@
-#heading {
-    color: grey;
+.heading {
+    color: black;
+}
+
+.info {
+    color: grey
 }
