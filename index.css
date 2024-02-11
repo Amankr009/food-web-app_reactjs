@@ -53,3 +53,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.filter {
+    display: flex;
+}
+
+.top-res-btn {
+    margin: 5px;
+}

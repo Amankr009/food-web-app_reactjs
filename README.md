@@ -50,3 +50,18 @@ config driven UI -> UI depends on config
 why needs to add key in map function in js -> to stop re-render on change in data and render only newly added data with the help of key having unique id.
 •	Index as key not recommended
 •	Prefer to use unique id
+
+
+Two types of Export/Import
+•	default Export/Import
+o	export default Component;
+o	import Component from “path”;
+•	Named Export/Import
+o	export const Component;
+o	import {Component} from “path”;
+React Hooks (Normal JS utility functions)
+•	useState() – import {useState} from “react”;
+o	const [variable, setState] = useState([default value]);
+•	useEffect()
+•	when state changes react re-render component
+react works on Reconciliation Algorithm (React Fiber) -> re-render reactDOM if there is change in react object
