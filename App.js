@@ -38,7 +38,7 @@ const Header = () => {
     );
 };
 
-const resData = [
+const resDataList = [
     {
         "info": {
           "id": "23719",
@@ -1790,8 +1790,8 @@ const Body = () => {
         <div className="body">
             <div className="search">Search</div>
             <div className="res-container">
-                {resData.map((resData)=> (
-                    <ResCard resData={resData} />
+                {resDataList.map((resDataList)=> (
+                    <ResCard key={resDataList?.info?.id} resData={resDataList} />
                 ))}
             </div>
         </div>
