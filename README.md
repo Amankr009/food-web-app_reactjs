@@ -65,3 +65,14 @@ o	const [variable, setState] = useState([default value]);
 •	useEffect()
 •	when state changes react re-render component
 react works on Reconciliation Algorithm (React Fiber) -> re-render reactDOM if there is change in react object
+
+
+Monolith Architecture -> all service at same place. frontend, backend, middleware codes..
+Microservices -> services are at different places
+	Different services deployed on different ports
+	All ports mapped to domain name
+useEffect() -> run after render
+	import {useEffect} from “react”;
+	useEffect(() => {console.log(“useEffect called”);}, []);
+	2 arguments -> callback function, dependency array
+Shimmer UI -> rather than use loading to wait for data, use fake UI

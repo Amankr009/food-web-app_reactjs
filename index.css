@@ -20,7 +20,8 @@
     margin: 0 10px;
 }
 
-.res-card {
+.res-card,
+.shimmer {
     margin: 5px;
     padding: 5px;
     height: 300px;
@@ -33,14 +34,11 @@
     border: 1px solid black;
 }
 
-.res-container {
+.res-container,
+.shimmer-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.search {
-    padding: 10px;
 }
 
 .res-logo {
@@ -56,8 +54,18 @@
 
 .filter {
     display: flex;
+    margin: 5px;
+    justify-content: center;
 }
 
 .top-res-btn {
-    margin: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.auth-btn {
+    width: 100px;
+    margin: 0 20px;
+    padding: 0 20px;
+    cursor: pointer;
 }

@@ -1,28 +1,64 @@
+import { useState, useEffect } from "react";
+import {RES_DATA_URL} from "../utils/constant";
+
 import ResCard from "./ResCard";
-import resDataList from "../utils/mockData";
-import { useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-    const [allCard, filterCards] = useState(resDataList);
+    const [allCard, setfilterCards] = useState([]);
+    // create a copy of above state, so it original data won't change on state update
+    const [copyAllCard, setAllCards] = useState([]); 
+    const [searchText, setSearchText] = useState("");
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        const data = await fetch(RES_DATA_URL);
+        const jsonData = await data.json();
+
+        //object call here is as per swiggy live API, incase break please configure with latest one
+        setfilterCards(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); 
+        setAllCards(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    };
 
     const topCards = () => {
         const topCardList =  allCard.filter(
             (res) => res?.info?.avgRating >= 4.5
         );
-        filterCards(topCardList);
+        setAllCards(topCardList);
     };
+
+    const searchItem = () => {
+        const searchItemList = allCard.filter(
+            (res) => res?.info?.name.toLowerCase().includes(searchText)
+        );
+        setAllCards(searchItemList);
+    }
 
     return (
         <div className="body">
             <div className="filter">
-                <div className="search">Search</div>
+                <div className="search">
+                    <input 
+                        type="text" 
+                        className="search-text"
+                        value={searchText}
+                        onChange={(e) =>setSearchText(e.target.value)}
+                    />
+                    <button className="search-btn" onClick={searchItem}>Search</button>
+                </div>
                 <button className="top-res-btn" onClick={topCards}>Top Rated Restaurants</button>
             </div>
-            <div className="res-container">
-                {allCard.map((resData)=> (
+            {allCard.length === 0 ? 
+            (<Shimmer />)
+            :
+            (<div className="res-container">
+                {copyAllCard.map((resData)=> (
                     <ResCard key={resData?.info?.id} resData={resData} />
                 ))}
-            </div>
+            </div>)}
         </div>
     );
 };
