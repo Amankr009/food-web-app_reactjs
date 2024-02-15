@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import {RES_DATA_URL} from "../utils/constant";
+import { Link } from "react-router-dom";
 
 import ResCard from "./ResCard";
 import Shimmer from "./Shimmer";
@@ -56,7 +57,9 @@ const Body = () => {
             :
             (<div className="res-container">
                 {copyAllCard.map((resData)=> (
-                    <ResCard key={resData?.info?.id} resData={resData} />
+                    <Link key={resData?.info?.id} to={"/restaurants/"+resData?.info?.id}>
+                        <ResCard resData={resData} />
+                    </Link>
                 ))}
             </div>)}
         </div>

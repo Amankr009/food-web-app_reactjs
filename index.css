@@ -69,3 +69,22 @@
     padding: 0 20px;
     cursor: pointer;
 }
+
+.loading {
+    display: flex;
+    flex-direction: column;
+}
+
+.shimmer-header {
+    margin: 5px;
+    height: 100px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.shimmer-body {
+    margin-top: 50px;
+    height: 500px;
+    width: 50%;
+    background-color: #f0f0f0;
+}
