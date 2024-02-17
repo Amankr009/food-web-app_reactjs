@@ -88,3 +88,19 @@
     width: 50%;
     background-color: #f0f0f0;
 }
+
+.user-card {
+    margin: 5px;
+    padding: 5px;
+    align-items: center;
+    border: 1px solid #f0f0f0;
+}
+
+.profile {
+    height: 25px;
+    display: flex;
+}
+
+.user-name {
+    padding: 5px;
+}

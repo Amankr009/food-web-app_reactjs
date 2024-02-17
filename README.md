@@ -1,5 +1,7 @@
 # Learn React
 
+- SPA(Single Page Application)
+
 - ReactElement(Object) => HTML(Browser Understands)
 
 
@@ -95,3 +97,9 @@
 -	client side routing
 - Dynamic routing -> ex-> on click card show details about that cards 
 
+
+- Class Component
+	- LifeCycle => constructor -> render -> componentDidMount -> componentDidUpdate(when state update) -> componentWillUnmount(call when leave that page)
+
+- Functional Component
+	- render -> useEffect (define return in case any operations required on page change)
