@@ -103,3 +103,14 @@
 
 - Functional Component
 	- render -> useEffect (define return in case any operations required on page change)
+
+- Custom Hooks for Optimisation
+	- Ex- fetch data from api by creating custom hook(normal js function to fetch data) and import in the component where data required.
+
+- Chunking - break down app into smaller file 
+	- also called 
+		- code splitting
+		- dynamic bundling
+		- lazy loading
+		- on demand loading
+		- dynamic import

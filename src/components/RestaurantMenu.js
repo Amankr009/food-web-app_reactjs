@@ -1,21 +1,11 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
-import {RES_CARD_DATA} from "../utils/constant";
+import useResCardData from "../utils/useResCardData";
 
 const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState(null);
     const {resId} = useParams();
 
-    useEffect(() => {
-        fetchMenu();
-    },[]);
-
-    const fetchMenu = async () => {
-        const menuData = await fetch(RES_CARD_DATA + resId);
-        const json = await menuData.json();
-        setResInfo(json?.data);
-    };
+    //Custom Hooks - helps to optimise the component and increase the reusability
+    const resInfo = useResCardData(resId);
 
     if(resInfo === null) {
         return (

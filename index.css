@@ -20,6 +20,11 @@
     margin: 0 10px;
 }
 
+.internet-status > img {
+    height: 24px;
+    width: 24px;
+}
+
 .res-card,
 .shimmer {
     margin: 5px;

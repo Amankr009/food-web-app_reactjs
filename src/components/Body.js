@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import {RES_DATA_URL} from "../utils/constant";
 import { Link } from "react-router-dom";
 
+import {RES_DATA_URL} from "../utils/constant";
 import ResCard from "./ResCard";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     const [allCard, setfilterCards] = useState([]);
+
     // create a copy of above state, so it original data won't change on state update
     const [copyAllCard, setAllCards] = useState([]); 
     const [searchText, setSearchText] = useState("");
@@ -36,6 +38,15 @@ const Body = () => {
             (res) => res?.info?.name.toLowerCase().includes(searchText)
         );
         setAllCards(searchItemList);
+    }
+
+    //Use of Custom hooks to get internet status
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus === false) {
+        return (
+            <h3>Something went wrong!! Please check you Internet Connectivity!!</h3>
+        )
     }
 
     return (
