@@ -114,3 +114,14 @@
 		- lazy loading
 		- on demand loading
 		- dynamic import
+
+
+- different way to add style
+	- sass
+	- scss
+	- style component
+	- different libraries - Material UI, Bootstrap, Chakra UI, Ant Design, tailwindcss etc..
+
+- tailwindcss
+	- go to tailwindcss and check the different ways to configure
+	- Tailwind CSS IntelliSense - tailwindcss helper extension for VS Code

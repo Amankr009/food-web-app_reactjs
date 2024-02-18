@@ -27,11 +27,11 @@ const Header = () => {
     const internetStatus = useOnlineStatus();
 
     return (
-        <div className="header">
+        <div className="header bg-gray-100">
             <div className="logo-container">
                 <img className="logo" src={LOGO_URL} />
             </div>
-            <div className="nav-items">
+            <div className="nav-items self-center">
                 <ul>
                     <li className="internet-status">Status: {internetStatus ? "🟢" :  "🔴"}</li>
                     <li>
@@ -47,7 +47,7 @@ const Header = () => {
                         <Link to="/contact">Contact Us</Link>
                     </li>
                     <li>Cart</li>
-                    <button class="auth-btn" onClick={checkAuth}>{btnText}</button>
+                    <button className="auth-btn border w-28 text-center active:bg-gray-300" onClick={checkAuth}>{btnText}</button>
                 </ul>
             </div>
         </div>

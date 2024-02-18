@@ -8,8 +8,8 @@ const ResCard = (props) => {
                 className="res-logo"
                 src={CDN_URL+cloudinaryImageId}
             />
-            <h3 className="text-wrap">{name}</h3>
-            <h4>{avgRating+" Stars. "+ sla.slaString}</h4>
+            <h3 className="font-bold">{name}</h3>
+            <h4 className="font-medium">{avgRating+" Stars. "+ sla.slaString}</h4>
             <h4 className="text-wrap">{cuisines.join(", ")}</h4>
         </div>
     );

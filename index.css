@@ -1,7 +1,12 @@
+/* use this file if wants to use tailwindcss*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* this file to apply normal css by adding className*/
 .header {
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
     height: 75px;
 }
 
@@ -29,7 +34,7 @@
 .shimmer {
     margin: 5px;
     padding: 5px;
-    height: 300px;
+    height: 250px;
     width: 200px;
     background-color: #f0f0f0;
 }
@@ -69,7 +74,6 @@
 }
 
 .auth-btn {
-    width: 100px;
     margin: 0 20px;
     padding: 0 20px;
     cursor: pointer;

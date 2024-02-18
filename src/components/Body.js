@@ -55,16 +55,19 @@ const Body = () => {
                 <div className="search">
                     <input 
                         type="text" 
-                        className="search-text"
+                        className="search-text border"
                         value={searchText}
                         onChange={(e) =>setSearchText(e.target.value)}
                     />
-                    <button className="search-btn" onClick={searchItem}>Search</button>
+                    <button className="search-btn border bg-gray-100 w-24 active:bg-gray-300" onClick={searchItem}>Search</button>
                 </div>
-                <button className="top-res-btn" onClick={topCards}>Top Rated Restaurants</button>
+                <button className="top-res-btn bg-gray-100 w-48 border active:bg-gray-300" onClick={topCards}>Top Rated Restaurants</button>
             </div>
             {allCard.length === 0 ? 
             (<Shimmer />)
+            :
+            (copyAllCard.length === 0 ? 
+                <div className="flex justify-center text-red-600 font-mono text-4xl">No Result Found!!</div>
             :
             (<div className="res-container">
                 {copyAllCard.map((resData)=> (
@@ -72,7 +75,7 @@ const Body = () => {
                         <ResCard resData={resData} />
                     </Link>
                 ))}
-            </div>)}
+            </div>))}
         </div>
     );
 };
