@@ -15,4 +15,16 @@ const ResCard = (props) => {
     );
 };
 
+// HOC - Higher Order Component
+export const VegResCard = (ResCard) => {
+    return(props => {
+        return (
+            <div>
+                <label className="absolute bg-black text-white m-[5px] px-[5px]">🟢Veg</label>
+                <ResCard {...props} />
+            </div>
+        );
+    });
+};
+
 export default ResCard;

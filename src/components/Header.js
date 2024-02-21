@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import {LOGO_URL} from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
     const [btnText, setbtnText] = useState("Login");
+    const {defaultUser, setUserName} = useContext(UserContext);
 
     //if no dependency array => useEffect is called on every render
     //if dependency array is empty = [] => useEffect is called on initial render(just once)
@@ -22,6 +24,7 @@ const Header = () => {
 
     function checkAuth() {
         btnText === "Login" ? setbtnText("Logout") : setbtnText("Login");
+        btnText === "Login" ? setUserName("Aman Kumar Yadav") : setUserName("User");
     }
 
     const internetStatus = useOnlineStatus();
@@ -33,6 +36,7 @@ const Header = () => {
             </div>
             <div className="nav-items self-center">
                 <ul>
+                    <h4>Hi, {defaultUser}</h4>
                     <li className="internet-status">Status: {internetStatus ? "🟢" :  "🔴"}</li>
                     <li>
                         <Link to="/">Home</Link>

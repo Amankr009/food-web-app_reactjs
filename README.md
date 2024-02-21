@@ -125,3 +125,12 @@
 - tailwindcss
 	- go to tailwindcss and check the different ways to configure
 	- Tailwind CSS IntelliSense - tailwindcss helper extension for VS Code
+
+
+- HOC(Higher Order Component) -> takes a compenent enhance and return the component
+
+- Lifting State Up -> when a state needs to be shared with sibilings, we lift the state ip to the closest common ancestor to handle.
+
+- props drilling -> passing data from one component to another components to access.
+- context helps use to create space for data and use data anywhere in app.
+- props drilling (problem) -> context (solution)

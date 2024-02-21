@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import useResCardData from "../utils/useResCardData";
+import MenuType from "./MenuType";
 
 const RestaurantMenu = () => {
     const {resId} = useParams();
+    const [open, setOpen] = useState(0);
 
     //Custom Hooks - helps to optimise the component and increase the reusability
     const resInfo = useResCardData(resId);
@@ -10,28 +13,25 @@ const RestaurantMenu = () => {
     if(resInfo === null) {
         return (
             <div className="loading">
-                <div className="shimmer-header"></div>
-                <div className="shimmer-body"></div>
+                <div className="shimmer-header mt-[5px]"></div>
+                <div className="shimmer-body w-[50%] mx-auto my-[20px]"></div>
             </div>
         )
     }
 
-    const index = (resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards).length-1;
-    const {name, completeAddress} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[index]?.card?.card;
-    const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    const index = (resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards).length-1;
+    const {name, completeAddress} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[index]?.card?.card;
+
+    const types = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((type) => type?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
 
     return (
-        <div className="menu">
-            <div className="border font-bold m-[5px] p-[5px]">
+        <div>
+            <div className="border font-bold m-[5px] p-[5px] text-center">
                 <div className="text-2xl">{name}</div>
                 <div className="text-base">{completeAddress}</div><br></br>
             </div>
-            <div className=" flex text-xl font-mono m-[5px] w-[50%] justify-center">Recommended</div>
-            <ul>
-                {itemCards.map((dish) => (
-                    <li className="border w-[50%] hover:bg-gray-100 active:bg-gray-300 cursor-pointer m-[5px]" key={dish?.card?.info?.id}><li>{dish?.card?.info?.name} - Rs. {(dish?.card?.info?.defaultPrice || dish?.card?.info?.price)/100}</li>{dish?.card?.info?.isVeg === 1 ? "Veg" : "Non-Veg"} - {dish?.card?.info?.ratings?.aggregatedRating?.rating} Stars rated by {dish?.card?.info?.ratings?.aggregatedRating?.ratingCountV2} Users</li>
-                ))}
-            </ul>
+            {/* MenuType - Controlled component -> when we can handle component -> here setOpen handle by MenuType*/}
+            {types.map((type, index) => <MenuType key={type?.card?.card?.title} itemData={type?.card?.card} show={index === open ? true : false} setOpen={() => setOpen(index)} />)}
         </div>
     )
 };

@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import {RES_DATA_URL} from "../utils/constant";
-import ResCard from "./ResCard";
+import ResCard, {VegResCard} from "./ResCard";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
     const [allCard, setfilterCards] = useState([]);
@@ -49,6 +50,10 @@ const Body = () => {
         )
     }
 
+    const CheckVegCard = VegResCard(ResCard);
+
+    const {defaultUser, setUserName} = useContext(UserContext);
+
     return (
         <div className="body">
             <div className="filter">
@@ -62,6 +67,10 @@ const Body = () => {
                     <button className="search-btn border bg-gray-100 w-24 active:bg-gray-300" onClick={searchItem}>Search</button>
                 </div>
                 <button className="top-res-btn bg-gray-100 w-48 border active:bg-gray-300" onClick={topCards}>Top Rated Restaurants</button>
+                <div className="flex mx-4">
+                    <div>Change User Name: </div>
+                    <input className="border-2 border-black mx-4 px-2" value={defaultUser} onChange={(e) => setUserName(e.target.value)} />
+                </div>
             </div>
             {allCard.length === 0 ? 
             (<Shimmer />)
@@ -72,7 +81,7 @@ const Body = () => {
             (<div className="res-container">
                 {copyAllCard.map((resData)=> (
                     <Link key={resData?.info?.id} to={"/restaurants/"+resData?.info?.id}>
-                        <ResCard resData={resData} />
+                        {resData?.info?.veg ? <CheckVegCard resData={resData} /> : <ResCard resData={resData} />}
                     </Link>
                 ))}
             </div>))}

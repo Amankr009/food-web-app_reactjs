@@ -1,5 +1,6 @@
 import React from "react";
-import {PROFILE_URL} from "../utils/constant"
+import {PROFILE_URL} from "../utils/constant";
+import UserContext from "../utils/UserContext";
 
 class UserClass extends React.Component {
     constructor(props) {
@@ -47,11 +48,17 @@ class UserClass extends React.Component {
             <div className="user-card">
                 <div className="profile">
                     <img src={avatar_url} />
-                    <div class="user-name">{name}</div>
+                    <div className="user-name">{name}</div>
                 </div>
                 <div>Info: Getting name with the help of {type} Component</div>
                 <h4>Count from Class: {count}</h4>
-                <button onClick={() => this.setState({count: this.state.count+1})}>Increase Count</button>
+                <button className="border px-2 bg-gray-500" onClick={() => this.setState({count: this.state.count+1})}>Increase Count</button>
+                <div>
+                    Default User:
+                    <UserContext.Consumer>
+                        {({defaultUser}) => <span>{" "+defaultUser}</span>}
+                    </UserContext.Consumer>
+                </div>
             </div>
         )
     }
