@@ -64,9 +64,9 @@ const Body = () => {
                         value={searchText}
                         onChange={(e) =>setSearchText(e.target.value)}
                     />
-                    <button className="search-btn border bg-gray-100 w-24 active:bg-gray-300" onClick={searchItem}>Search</button>
+                    <button className="search-btn border bg-gray-100 w-24 hover:bg-gray-300 active:bg-gray-500" onClick={searchItem}>Search</button>
                 </div>
-                <button className="top-res-btn bg-gray-100 w-48 border active:bg-gray-300" onClick={topCards}>Top Rated Restaurants</button>
+                <button className="top-res-btn bg-gray-100 w-48 border hover:bg-gray-300 active:bg-gray-500" onClick={topCards}>Top Rated Restaurants</button>
                 <div className="flex mx-4">
                     <div>Change User Name: </div>
                     <input className="border-2 border-black mx-4 px-2" value={defaultUser} onChange={(e) => setUserName(e.target.value)} />

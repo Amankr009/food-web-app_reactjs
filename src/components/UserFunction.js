@@ -28,7 +28,7 @@ const UserFunction = ({name, type}) => {
             <div>Name: {name}</div>
             <div>Info: Getting name with the help of {type} Component</div>
             <h4>Count from Function: {count}</h4>
-            <button className="border bg-gray-300 px-2" onClick={increase}>Increase Count</button>
+            <button className="border bg-gray-300 px-2 rounded" onClick={increase}>Increase Count</button>
             <div>Default User: {defaultUser}</div>
             {console.log("Child return of Functional Component")}
         </div>

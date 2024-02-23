@@ -52,7 +52,7 @@ class UserClass extends React.Component {
                 </div>
                 <div>Info: Getting name with the help of {type} Component</div>
                 <h4>Count from Class: {count}</h4>
-                <button className="border px-2 bg-gray-500" onClick={() => this.setState({count: this.state.count+1})}>Increase Count</button>
+                <button className="border px-2 bg-gray-500 rounded" onClick={() => this.setState({count: this.state.count+1})}>Increase Count</button>
                 <div>
                     Default User:
                     <UserContext.Consumer>

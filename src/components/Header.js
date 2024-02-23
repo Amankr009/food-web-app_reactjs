@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 
 import {LOGO_URL} from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -29,30 +30,33 @@ const Header = () => {
 
     const internetStatus = useOnlineStatus();
 
+    // Subscribing to the store using a Selector
+    const cartItems = useSelector((store) => store.cart.items);
+
     return (
-        <div className="header bg-gray-100">
-            <div className="logo-container">
+        <div className="header bg-gray-100 sticky top-0 z-50">
+            <div className="flex">
                 <img className="logo" src={LOGO_URL} />
+                <div className="font-semibold font-mono self-center text-xl px-4">Hi, {defaultUser}</div>
             </div>
-            <div className="nav-items self-center">
-                <ul>
-                    <h4>Hi, {defaultUser}</h4>
-                    <li className="internet-status">Status: {internetStatus ? "🟢" :  "🔴"}</li>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/grocery">Grocery</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">About Us</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact">Contact Us</Link>
-                    </li>
-                    <li>Cart</li>
-                    <button className="auth-btn border w-28 text-center active:bg-gray-300" onClick={checkAuth}>{btnText}</button>
-                </ul>
+            <div className=" flex nav-items self-center gap-2 font-semibold text-xl">
+                <div className="hover:bg-gray-300 px-4">
+                    <Link to="/">Home</Link>
+                </div>
+                <div className="hover:bg-gray-300 px-4">
+                    <Link to="/grocery">Grocery</Link>
+                </div>
+                <div className="hover:bg-gray-300 px-4">
+                    <Link to="/about">About Us</Link>
+                </div>
+                <div className="hover:bg-gray-300 px-4">
+                    <Link to="/contact">Contact Us</Link>
+                </div>
+                <div className="hover:bg-gray-300 px-4">
+                    <Link to="/cart">Cart - ({cartItems.length} items)</Link>
+                </div>
+                <button className="auth-btn border-slate-900 border-2 w-28 text-center hover:bg-gray-300 px-4 active:bg-red-500 rounded-sm" onClick={checkAuth}>{btnText}</button>
+                <div className="internet-status">Status: {internetStatus ? "🟢" :  "🔴"}</div>
             </div>
         </div>
     );

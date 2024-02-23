@@ -1,6 +1,16 @@
+import {useDispatch} from "react-redux";
+
 import {CDN_URL} from "../utils/constant";
+import { addItems, addPrice } from "../utils/cartSlice";
 
 const MenuItems = ({menuData}) => {
+    const dispatch = useDispatch();
+
+    const handleAddItems = (items) => {
+        dispatch(addItems(items));
+        dispatch(addPrice(items?.price || items?.defaultPrice));
+    };
+
     return (
         <div className="border-b-2 flex justify-between p-4 h-auto">
             <div className="w-9/12">
@@ -10,7 +20,9 @@ const MenuItems = ({menuData}) => {
             </div>
             <div className="w-3/12 relative">
                 <img src={CDN_URL+menuData?.imageId}/>
-                <div className="bg-gray-500 text-white h-auto w-14 rounded px-1 absolute top-[-10px] left-12 cursor-pointer">Add +</div>
+                <div>
+                    <button className="bg-gray-500 text-white h-auto w-14 rounded px-1 absolute top-[-10px] right-0 cursor-pointer" onClick={() => handleAddItems(menuData)}>Add +</button>
+                </div>
             </div>
         </div>
     )

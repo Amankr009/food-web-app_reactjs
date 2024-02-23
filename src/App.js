@@ -9,6 +9,10 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
 import { useState, useEffect } from "react";
+import {Provider} from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 /**
  * Header
@@ -43,13 +47,16 @@ const AppLayout = () => {
     },[]);
 
     return (
-        <UserContext.Provider value={{defaultUser: userName, setUserName}}>
-            <div className="app">
-                <Header />
-                {/** Outlet from react-router-dom helps to render children as per path, their is track of Outlet in our code */}
-                <Outlet />
-            </div>
-        </UserContext.Provider>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{defaultUser: userName, setUserName}}>
+                <div className="app">
+                    <Header />
+                    {/** Outlet from react-router-dom helps to render children as per path, their is track of Outlet in our code */}
+                    <Outlet />
+                    <Footer />
+                </div>
+            </UserContext.Provider>
+        </Provider>
     );
 };
 
@@ -85,6 +92,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurants/:resId",
                 element: <RestaurantMenu />
+            },
+            {
+                path: "/cart",
+                element: <Cart />
             }
         ],
         errorElement: <Error />
