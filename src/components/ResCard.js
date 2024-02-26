@@ -3,7 +3,7 @@ import {CDN_URL} from "../utils/constant";
 const ResCard = (props) => {
     const {cloudinaryImageId,name,cuisines,avgRating,sla} = props?.resData?.info;
     return (
-        <div className="res-card">
+        <div className="res-card" data-testid="res-card">
             <img alt="res-logo"
                 className="res-logo"
                 src={CDN_URL+cloudinaryImageId}
@@ -20,7 +20,7 @@ export const VegResCard = (ResCard) => {
     return(props => {
         return (
             <div>
-                <label className="absolute bg-black text-white m-[5px] px-[5px]">🟢Veg</label>
+                <label data-testid="veg" className="absolute bg-black text-white m-[5px] px-[5px]">🟢Veg</label>
                 <ResCard {...props} />
             </div>
         );

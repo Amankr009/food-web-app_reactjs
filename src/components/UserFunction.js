@@ -6,10 +6,10 @@ const UserFunction = ({name, type}) => {
     const {defaultUser} = useContext(UserContext);
     
     useEffect(() => {
-        console.log("Child useEffect of Functional Component")
+        //console.log("Child useEffect of Functional Component")
 
         const operationsOnPageChangesCheck = setInterval(() => {
-            console.log("Interval in Functional Component");
+            //console.log("Interval in Functional Component");
         },1000);
 
         return () => {
@@ -30,7 +30,7 @@ const UserFunction = ({name, type}) => {
             <h4>Count from Function: {count}</h4>
             <button className="border bg-gray-300 px-2 rounded" onClick={increase}>Increase Count</button>
             <div>Default User: {defaultUser}</div>
-            {console.log("Child return of Functional Component")}
+            {/* console.log("Child return of Functional Component") */}
         </div>
     )
 };

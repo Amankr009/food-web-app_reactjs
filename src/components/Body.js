@@ -59,6 +59,7 @@ const Body = () => {
             <div className="filter">
                 <div className="search">
                     <input 
+                        data-testid="search-input"
                         type="text" 
                         className="search-text border"
                         value={searchText}

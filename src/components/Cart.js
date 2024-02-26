@@ -9,10 +9,8 @@ const Cart = () => {
     const dispatch = useDispatch();
 
     const handleClearCart = () => {
-        if(window.confirm("Want to clear cart?")) {
-            dispatch(clearCart());
-            dispatch(clearPrice());
-        }
+        dispatch(clearCart());
+        dispatch(clearPrice());
     }
 
     function totalAmount(total, amount) {
@@ -38,7 +36,7 @@ const Cart = () => {
             </div>)
             }
             {cartItems.map((item, index) => (
-                <div key={item?.name+"-"+index} className="flex mt-8 mx-auto justify-between">
+                <div key={item?.name+"-"+index} className="flex mt-8 mx-auto justify-between" data-testid="cart-item">
                     <div>{item?.name}</div>
                     <div>₹{(item?.price || item?.defaultPrice)/100}</div>
                 </div>

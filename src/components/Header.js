@@ -14,18 +14,18 @@ const Header = () => {
     //if dependency array is empty = [] => useEffect is called on initial render(just once)
     //is dependency array is [btnNameReact](having any value) => called everytime btnNameReact is updated
     useEffect(()=> {
-        console.log("on every render");
+        //console.log("on every render");
     })
     useEffect(()=> {
-        console.log("on initial render(just once)");
+        //console.log("on initial render(just once)");
     },[])
     useEffect(()=> {
-        console.log("called everytime btnNameReact is updated");
+        //console.log("called everytime btnNameReact is updated");
     },[btnText])
 
     function checkAuth() {
         btnText === "Login" ? setbtnText("Logout") : setbtnText("Login");
-        btnText === "Login" ? setUserName("Aman Kumar Yadav") : setUserName("User");
+        //btnText === "Login" ? setUserName("Aman Kumar Yadav") : setUserName("User");
     }
 
     const internetStatus = useOnlineStatus();

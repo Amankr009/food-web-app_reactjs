@@ -1,45 +1,45 @@
 # About React
 
-- SPA(Single Page Application)
+- can create SPA(Single Page Application)
 
 - ReactElement(Object) => HTML(Browser Understands)
 
 
-- 	Browser understand keys document, innerHTML, getElementById.. because browser having JS engine in it.
--	Browser do not know react.
--	Use react in brower – 
--	cdn – add cdn link in code(not preferred)
--	npm – npm install react  / npm install react-dom, then import and add type=”module” under script tag
+- Browser understand keys document, innerHTML, getElementById.. because browser having JS engine in it.
+- Browser do not know react.
+- Use react in brower – 
+	- cdn – add cdn link in code(not preferred)
+	- npm – npm install react  / npm install react-dom, then import and add type=”module” under script tag 
 
+- package.json is config for npm (required on git)
+	- ^ - auto minor update
+	- ~ - auto major update
+	- devDependencies – used for dev
 
--	package.json is config for npm (required on git)
--	^ - auto minor update
--	~ - auto major update
--	devDependencies – used for dev
--	ex - npm install -D parcel
--	parcel created a server for project and hosted on port(cmd – npx parcel index.html)
--	parcel also do HMR – hot module replacement
--	parcel – File Watching algorithm(written in c++)
--	parcel – caching for faster builds
--	parcel – do image optimization, minification, bundling, compress, consistent hashing, code splitting, differential bundling(support on different browser or browser version), error handling, HTTPs, diagnostics, tree shaking(remove unused codes) 
--	parcel – different dev and prod bundles under dist folder(cmd - npx parcel build index.html)
--	npm – to install package
--	npx – to execute package
--	dependencies – can used on production also
--	package-lock.json – keeps exact track of version of packages(lock exact version) (required on git)
--	node_modules – contains all the code that we fetch from npm (not required on git)
--	.gitignore – ignore files(ex-node_modules) to push on production/git-
--	browserslist under package.json 
--	can define which version and browser compatible to use our app
--	ex – “browserlist”: [“last 2 version”] 
--	browserlist.dev - ref-
--	Transitive dependencies – dependencies having dependencies and so on
--	webpack – bundler of code for production like parcel
+- ex - npm install -D parcel
+- parcel created a server for project and hosted on port(cmd – npx parcel index.html)
+- parcel also do HMR – hot module replacement
+- parcel – File Watching algorithm(written in c++)
+- parcel – caching for faster builds
+- parcel – do image optimization, minification, bundling, compress, consistent hashing, code splitting, differential bundling(support on different browser or browser version), error handling, HTTPs, diagnostics, tree shaking(remove unused codes) 
+- parcel – different dev and prod bundles under dist folder(cmd - npx parcel build index.html)
+- npm – to install package
+- npx – to execute package
+- dependencies – can used on production also
+- package-lock.json – keeps exact track of version of packages(lock exact version) (required on git)
+- node_modules – contains all the code that we fetch from npm (not required on git)
+- .gitignore – ignore files(ex-node_modules) to push on production/git-
+- browserslist under package.json 
+- can define which version and browser compatible to use our app
+- ex – “browserlist”: [“last 2 version”] 
+- browserlist.dev - ref-
+- Transitive dependencies – dependencies having dependencies and so on
+- webpack – bundler of code for production like parcel
 
 - package.json – “script” -> “start”, “build”
 
--	JSX –  JSX is not HTML, it is HTML-like or XML-like syntax.
--	JSX transpiled before it reaches the JS – by parcel with the help of babel package
+- JSX –  JSX is not HTML, it is HTML-like or XML-like syntax.
+- JSX transpiled before it reaches the JS – by parcel with the help of babel package
 - JSX -> React.createElement -> React.Element-JS Object -> HTMLElement(render)
 - babeljs.io – ref
 
@@ -190,3 +190,64 @@
 		- either Mutate the existing state or return a new state
 
 - Zustand - same as redux to handle state
+
+# Testing(Devloper)
+- Types
+	- Unit Testing
+	- Integration Testing
+	- End to End Testing / e2e testing
+
+- Testing Library
+	- React Testing Library (uses JEST -> JavaScript Testing Framework)
+
+- Setting up Testing in our app(our app uses parcel)
+	- npm i -D @testing-library/react
+
+	- npm i -D jest
+
+	- npm install --save-dev babel-jest @babel/core @babel/preset-env
+
+	- configure babel
+		- create a file babel.config.js at root level
+		- add -> module.exports = {
+  					presets: [['@babel/preset-env', {targets: {node: 'current'}}]],
+				};
+
+	- configure parcel config file to disable default babel transpilation
+		- create a file .parcelrc at root level
+		- add ->	{
+  						"extends": "@parcel/config-default",
+  						"transformers": {
+    						"*.{js,mjs,jsx,cjs,ts,tsx}": [
+     							"@parcel/transformer-js",
+      							"@parcel/transformer-react-refresh-wrap"
+    						]
+ 						}
+					}
+
+	- npx jest --init
+		- configure
+			- √ Would you like to use Typescript for the configuration file? ... no
+			- √ Choose the test environment that will be used for testing » jsdom (browser-like)
+			- √ Do you want Jest to add coverage reports? ... yes
+			- √ Which provider should be used to instrument code for coverage? » babel
+			- √ Automatically clear mock calls, instances, contexts and results before every test? ... yes
+
+	- npm i --save-dev jest-environment-jsdom (if you are unsing jest 28 or above)
+
+	- npm i -D @babel/preset-react -> to make JSX work in test cases
+		- include @babel/preset-react inside babel.config.js 
+			- under presets array -> add -> ["@babel/preset-react", { runtime: "automatic"}] -> helps JSX/react code to converted normal HTML code
+
+	- npm i -D @testing-library/jest-dom
+		- import in test files -> import "@testing-library/jest-dom"
+
+- npm run test -> commands to check test cases
+- to auto run test on change in code, add -> "watch-test": "jest --watch", under script in package.json
+
+- some helper functions for test cases
+	- beforeALL(()=> {}); -> runs before test cases runs
+	- beforeEach(()=> {}); -> runs before each test cases runs
+	- afterALL(()=> {}); -> runs after test cases runs
+	- afterEach(()=> {}); -> runs after each test cases runs
+-----------------------------------------------------------------------------------------------------------------------------------------

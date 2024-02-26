@@ -10,11 +10,11 @@ class UserClass extends React.Component {
             count: 0,
             userInfo: {}
         }
-        console.log("Child consrtuctor of Class Component");
+        //console.log("Child consrtuctor of Class Component");
     }
 
     async componentDidMount() {
-        console.log("Child componentDidMount of Class Component");
+        //console.log("Child componentDidMount of Class Component");
 
         const profileData = await fetch(PROFILE_URL);
         const json = await profileData.json();
@@ -24,16 +24,16 @@ class UserClass extends React.Component {
         })
 
         this.checkOnPageChanges = setInterval(() => {
-            console.log("Interval in Class Component");
+            //console.log("Interval in Class Component");
         },1000);
     }
 
     componentDidUpdate() {
-        console.log("Child componentDidUpdate of Class Component")
+        //console.log("Child componentDidUpdate of Class Component")
     }
 
     componentWillUnmount() {
-        console.log("Child componnentDidUnmount of Class Component");
+        //console.log("Child componnentDidUnmount of Class Component");
         clearInterval(this.checkOnPageChanges);
     }
 
@@ -42,7 +42,7 @@ class UserClass extends React.Component {
         const {count} = this.state;
         const {name, avatar_url} = this.state.userInfo;
 
-        console.log("Child render of Class Component")
+        //console.log("Child render of Class Component")
 
         return (
             <div className="user-card">

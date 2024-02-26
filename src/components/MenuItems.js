@@ -12,7 +12,7 @@ const MenuItems = ({menuData}) => {
     };
 
     return (
-        <div className="border-b-2 flex justify-between p-4 h-auto">
+        <div className="border-b-2 flex justify-between p-4 h-auto" data-testid="menu-items">
             <div className="w-9/12">
                 <div className="text-xl font-semibold pb-2">{menuData?.name} - ₹{(menuData?.price || menuData?.defaultPrice)/100}</div>
                 <div>{menuData?.isVeg === 1 ? "🟢Veg" : "🟤Non-Veg"}</div>
