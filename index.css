@@ -1,3 +1,112 @@
-#heading {
-    color: grey;
+/* use this file if wants to use tailwindcss*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* this file to apply normal css by adding className*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+}
+
+.logo {
+    width: 100px;
+}
+
+.nav-items > ul {
+    font-size: 24px;
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-items > ul > li {
+    padding: 0 10px;
+    margin: 0 10px;
+}
+
+.internet-status > img {
+    height: 24px;
+    width: 24px;
+}
+
+.res-card,
+.shimmer {
+    margin: 5px;
+    padding: 5px;
+    height: 250px;
+    width: 200px;
+    background-color: #f0f0f0;
+}
+
+.res-card:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.res-container,
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.res-logo {
+    width: 100%;
+    height: 50%;
+}
+
+.text-wrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filter {
+    display: flex;
+    margin: 5px;
+    justify-content: center;
+}
+
+.top-res-btn {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.auth-btn {
+    margin: 0 20px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+}
+
+.shimmer-header {
+    height: 100px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.shimmer-body {
+    height: 600px;
+    background-color: #f0f0f0;
+}
+
+.user-card {
+    margin: 5px;
+    padding: 5px;
+    align-items: center;
+    border: 1px solid #f0f0f0;
+}
+
+.profile {
+    height: 25px;
+    display: flex;
+}
+
+.user-name {
+    padding: 5px;
 }
