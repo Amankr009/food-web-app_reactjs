@@ -11,7 +11,7 @@ const Cart = () => {
     const handleClearCart = () => {
         dispatch(clearCart());
         dispatch(clearPrice());
-    }
+    };
 
     function totalAmount(total, amount) {
         return total+amount;
@@ -20,7 +20,7 @@ const Cart = () => {
     const orderPlaced = () => {
         dispatch(clearCart());
         window.alert("Order Placed 😋");
-    }
+    };
 
     return (
         <div className="w-6/12 text-center mx-auto my-4">
@@ -43,7 +43,7 @@ const Cart = () => {
             ))}
             {cartItems.length !== 0 && <button className="border-2 border-gray-900 bg-gray-300 m-4 px-4 hover:bg-gray-500 active:bg-green-500 rounded" onClick={handleClearCart}>Clear Cart</button>}
         </div>
-    )
-}
+    );
+};
 
 export default Cart;

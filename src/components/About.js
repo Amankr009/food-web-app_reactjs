@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const About = () => {
     useEffect(() => {
         //console.log("Parent Functional Component");
-    })
+    });
 
     return (
         <div>
@@ -15,7 +15,7 @@ const About = () => {
             <UserClass type={"Class"} />
             {/* console.log("Parent return of Functional Component") */}
         </div>
-    )
+    );
 };
 
 export default About;
